@@ -1,14 +1,25 @@
-README.md:
+# ✅ **2. linux-hardening — README.md**
 
 ```md
-# Hardening Básico de Ubuntu
+# 🔐 Linux Hardening Script (Ubuntu)
 
-Incluye:
-✅ Firewall UFW  
-✅ Fail2ban  
-✅ Cambio de puerto SSH  
+Este script aplica medidas básicas de endurecimiento en servidores Ubuntu,
+mejorando la seguridad desde el primer minuto.
 
-## Uso
+## ✅ Funcionalidades
+
+- Instalación y configuración de UFW (firewall)
+- Instalación de Fail2Ban
+- Cambio automático del puerto SSH
+- Activación de servicios de seguridad
+
+## 📦 Tecnologías
+
+- Bash
+- UFW
+- Fail2Ban
+
+## ▶️ Uso
 
 ```bash
 sudo chmod +x hardening.sh
