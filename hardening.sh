@@ -35,7 +35,6 @@ log "🔥 Configurando firewall..."
 
 ufw allow 22/tcp
 ufw allow 2222/tcp
-
 ufw --force enable
 
 # =========================
@@ -48,10 +47,16 @@ SSH_CONFIG="/etc/ssh/sshd_config"
 # Backup
 cp $SSH_CONFIG ${SSH_CONFIG}.bak
 
-# Cambiar puerto solo si no está ya cambiado
+# Cambiar puerto
 if grep -q "^#Port 22" $SSH_CONFIG; then
     sed -i 's/#Port 22/Port 2222/' $SSH_CONFIG
 fi
+
+# Deshabilitar root login
+sed -i 's/^#PermitRootLogin yes/PermitRootLogin no/' $SSH_CONFIG
+
+# Deshabilitar password auth (opcional pero recomendado)
+sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' $SSH_CONFIG
 
 systemctl restart ssh
 
@@ -63,4 +68,4 @@ systemctl enable fail2ban
 systemctl start fail2ban
 
 log "✅ Hardening completado"
-log "⚠️ Recuerda conectarte ahora por puerto 2222"
+log "⚠️ Conéctate usando SSH por puerto 2222"
